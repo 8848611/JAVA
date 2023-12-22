@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div id="top">
+        <div>
+            <button id="name"></button>
+            <button id="logout">退出</button>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var userinfo = JSON.parse(localStorage.getItem("userinfo"));
+            document.getElementById('name').innerText = userinfo.data.name;
+            var btn = document.getElementById('logout');
+            btn.onclick = function () {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "http://localhost:8080/employee/logout", true);
+                xhttp.setRequestHeader('Content-Type','application/json')
+                xhttp.send("");
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var res = JSON.parse(this.responseText)
+                        if(res.code == '1'){
+                            localStorage.removeItem("employee")
+                            location.href = '/pages/page/login.html'
+                        }
+                    }
+                };
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
