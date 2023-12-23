@@ -4,40 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/backend.css">
 </head>
 
 <body>
-    <div id="top">
-        <div>
-            <button id="name"></button>
-            <button id="logout">退出</button>
+    <div id="backend">
+        <div class="left-banner">
+            <div class="logo">俏江南</div>
+            <div class="list"></div>
         </div>
+        <div class="content-wrap">
+            <div class="top">
+                <div class="showName">asdf</div>
+                <div class="oprate">
+                    <button id="name"></button>
+                    <button id="logout">退出</button>
+                </div>
+            </div>
+            <!-- 员工信息模块 -->
+            <div class="employee-wrap">
+                <div class="employee-top">
+                    <div><input type="search" placeholder="请输入员工姓名" name="" id=""></div>
+                    <div class="addEmployee" id="addEmployee">添加员工</div>
+                </div>
+                <div class="employee-content">
+                    <div class="content-header">
+                        <div class="header-item">员工姓名</div>
+                        <div class="header-item">账号</div>
+                        <div class="header-item">手机号</div>
+                        <div class="header-item">账号状态</div>
+                        <div class="header-item">操作</div>
+                    </div>
+                    <div class="content-list">
+
+                    </div>
+                    <!--<div class="empty">暂无数据!</div>-->
+                </div>
+                <div class="employee-bottom">
+                    分页
+                </div>
+            </div>
+
+            <!-- 添加员工模块 -->
+            <div class="addEmploy-wrap hidden" id="addForm">
+                <div class="back goHome">返回</div>
+                <div class="elem-item">
+                    账号:<input type="text" placeholder="请输入账号" name="username">
+                </div>
+                <div class="elem-item">
+                    姓名:<input type="text" placeholder="请输入姓名" name="name">
+                </div>
+                <div class="elem-item">
+                    手机号:<input type="text" placeholder="请输入手机号" name="phone">
+                </div>
+                <div class="elem-item">
+                    请选择性别:<input type="radio" name="sex" checked value="1"> 男
+                    <input type="radio" name="sex" value="0"> 女
+                </div>
+                <div class="elem-item">
+                    身份证号:<input type="text" placeholder="请输入身份证号" name="id_number">
+                </div>
+                <div class="add-button">
+                    <button class="cancle btn">取消</button>
+                    <input class="save btn" type="submit" id="saveEmployee" value="保存">
+                </div>
+            </div>
+        </div>
+
     </div>
-    <script>
-        window.onload = function () {
-            var userinfo = JSON.parse(localStorage.getItem("userinfo"));
-            document.getElementById('name').innerText = userinfo.data.name;
-            var btn = document.getElementById('logout');
-            btn.onclick = function () {
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("POST", "http://localhost:8080/employee/logout", true);
-                xhttp.setRequestHeader('Content-Type','application/json')
-                xhttp.send("");
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var res = JSON.parse(this.responseText)
-                        if(res.code == '1'){
-                            localStorage.removeItem("employee")
-                            location.href = '/pages/page/login.html'
-                        }
-                    }
-                };
-            }
-
-        }
-
-    </script>
+    <script src="../js/backend.js"></script>
 </body>
 
 </html>

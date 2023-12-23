@@ -99,7 +99,7 @@ public class Employee implements Serializable {
         this.status = status;
     }
 
-    public LocalDateTime getCreateTime() {
+    public LocalDateTime getCreateTime(LocalDateTime now) {
         return createTime;
     }
 

@@ -1,8 +1,10 @@
 package com.jingdong.reggiepro.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdong.reggiepro.common.R;
 import com.jingdong.reggiepro.entity.Employee;
+import com.jingdong.reggiepro.mapper.EmployeeMapper;
 import com.jingdong.reggiepro.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDateTime;
 
 
 @Slf4j
@@ -53,5 +56,31 @@ public class EmployeeController {
         //登录成功后,将用户id存入session
         request.getSession().removeAttribute("employee");
         return  R.success("退出成功");
+    }
+
+    @PostMapping("/addOrEudate")
+    @CrossOrigin
+    public R<String> addOrEudate(HttpServletRequest request,@RequestBody Employee employee){
+
+        //设置初始密码为123456
+        employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
+        employee.setCreateTime(LocalDateTime.now());
+        employee.setUpdateTime(LocalDateTime.now());
+        Long empId = (Long) request.getSession().getAttribute("employee");
+        employee.setCreateUser(1L);
+        employee.setUpdateUser(1L);
+//        employee.setIdNumber("4917234123412341");
+        employeeService.save(employee);
+        System.out.println("8888888888888");
+        return  R.success("添加成功");
+    }
+
+    @GetMapping("/selectPage")
+    @CrossOrigin
+    public R<Page> selectPage(int page,int pageSize){
+        System.out.println(page + "&&&&&&&&&&&&" +pageSize);
+        Page pageInfo = new Page(page,pageSize);
+        employeeService.page(pageInfo);
+        return  R.success(pageInfo);
     }
 }

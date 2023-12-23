@@ -1,0 +1,127 @@
+#backend .content-wrap{
+    padding-left: 150px;
+    position: relative;
+}
+#backend .left-banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100vh;
+    background-color: #000066;
+    color: antiquewhite;
+}
+#backend .left-banner .logo{
+    padding-top: 50px;
+    font-size: 28px;
+    text-align: center;
+}
+#backend .left-banner .list{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+}
+#backend .left-banner .list .label-item{
+    padding: 10px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#backend .left-banner .list .label-item:hover{
+    background-color: orange;
+}
+#backend .left-banner .list .label-item.active{
+    background-color: orange;
+    color: #000066;
+    font-size: 20px;
+    font-weight: 700;
+}
+#backend .content-wrap .top{
+    position: relative;
+    height: 50px;
+    background-color: orange;
+    display: flex;
+    padding: 0 20px;
+}
+#backend .content-wrap .top .showName{
+    line-height: 50px;
+}
+#backend .content-wrap .top .oprate{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#backend .employee-wrap{
+    background-color: #fff;
+    margin: 20px;
+    position: relative;
+    padding: 20px;
+}
+#backend .employee-wrap .employee-top{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    padding: 0 50px;
+}
+#backend .employee-wrap .employee-top .addEmployee{
+    padding: 10px 20px;
+    background-color: orange;
+    border-radius: 15px;
+}
+#backend .employee-wrap .employee-content{
+    border: 1px solid #eee;
+    text-align: center;
+    
+}
+#backend .employee-wrap .employee-content .content-header{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 50px;
+}
+#backend .employee-wrap .employee-content .content-header .header-item{
+   font-size: 18px;
+   color: #000066;
+   font-weight: 700;
+ }
+ #backend .employee-wrap .employee-content .empty{
+    border: 1px solid #eee;
+    line-height: 100px;
+ }
+
+ #backend .addEmploy-wrap{
+    line-height: 30px;
+    text-align: center;
+    background-color: #fff;
+    margin: 20px;
+    padding-bottom: 100px;
+    position: relative;
+    border-radius: 10px;
+ }
+ #backend .addEmploy-wrap .elem-item{
+    padding: 30px;
+ }
+ #backend .addEmploy-wrap .back{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: orange;
+    width: 100px;
+    border-radius: 10px;
+ }
+ #backend .addEmploy-wrap .add-button .btn{
+    padding: 10px;
+    background-color: orange;
+    border: none;
+    width: 100px;
+    border-radius: 10px;
+ }
+ #backend .addEmploy-wrap .add-button .btn.cancle{
+    background-color: #ccc;
+    margin-right: 100px;
+ }
+ 
