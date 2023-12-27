@@ -10,9 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 
@@ -83,4 +86,5 @@ public class EmployeeController {
         employeeService.page(pageInfo);
         return  R.success(pageInfo);
     }
+
 }
